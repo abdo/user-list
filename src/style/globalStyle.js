@@ -22,4 +22,7 @@ export const GlobalStyle = createGlobalStyle`
   img {
     user-select: none;
   }
+  p {
+    word-break: break-all;
+  }
 `;
