@@ -5,9 +5,9 @@ const http = {
   post: axios.post,
   put: axios.put,
   patch: axios.patch,
-  delete: axios.delete
+  delete: axios.delete,
 };
 
 export default http;
 
-export const serverPath = 'http://js-assessment-backend.herokuapp.com/users.json';
+export const serverPath = 'http://js-assessment-backend.herokuapp.com';

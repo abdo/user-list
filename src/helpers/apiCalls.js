@@ -1,11 +1,11 @@
 import http, { serverPath } from './httpService';
 
-const config = {
-  headers: { 'Content-Type': 'application/json' },
-};
-
 export const userApi = {
   getAllUsers: () => {
-    return http.get(serverPath, config);
+    return http.get(`${serverPath}/users.json`);
+  },
+
+  editUser: ({ userId, newData }) => {
+    return http.put(`${serverPath}/users/${userId}.json`, newData);
   },
 };

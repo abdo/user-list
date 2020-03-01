@@ -1,15 +1,23 @@
 import { Card } from 'components/Card';
-import { Container } from 'components/Container';
 import { userApi } from 'helpers/apiCalls';
+import Alert from 'antd/lib/alert';
+import message from 'antd/lib/message';
 import moment from 'moment';
+import Pagination from 'antd/lib/pagination';
 import React, { useEffect, useState } from 'react';
-import { Alert, Pagination, Spin } from './style';
+import Spin from 'antd/lib/spin';
+import Switch from 'antd/lib/switch';
+
+import { Container, StatusIndicator } from './style';
 
 const UserList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [users, setUsers] = useState([]);
   const [isLoadingUsers, setIsLoadingUsers] = useState(false);
   const [getUsersError, setGetUsersError] = useState(false);
+
+  // An object whose keys is user id and value is true or false
+  const [isEditingUser, setIsEditingUser] = useState({});
 
   useEffect(() => {
     setIsLoadingUsers(true);
@@ -22,6 +30,24 @@ const UserList = () => {
       .catch(() => setGetUsersError(true))
       .finally(() => setIsLoadingUsers(false));
   }, []);
+
+  const onEditUserStatus = ({ userId, newStatus }) => {
+    setIsEditingUser({ ...isEditingUser, [userId]: true });
+    userApi
+      .editUser({ userId, newData: { status: newStatus } })
+      .then(() => {
+        setUsers(
+          users.map((user) => {
+            if (user.id === userId) {
+              user.status = newStatus;
+            }
+            return user;
+          }),
+        );
+      })
+      .catch(() => message.error('Error while editing user'))
+      .finally(() => setIsEditingUser({ ...isEditingUser, [userId]: false }));
+  };
 
   const displayedUsers = users.slice(
     (currentPage - 1) * 10,
@@ -46,7 +72,7 @@ const UserList = () => {
       )}
 
       {displayedUsers.map((user) => {
-        const { first_name, last_name, created_at, status } = user;
+        const { id, first_name, last_name, created_at, status } = user;
         const formattedDate = moment(created_at).format(
           'MMMM Do YYYY HH:mm:ss',
         );
@@ -62,6 +88,20 @@ const UserList = () => {
             <p>
               Created At: <b>{formattedDate}</b>
             </p>
+            <StatusIndicator>
+              <p>{status}</p>
+              <Switch
+                defaultChecked={!isLocked}
+                disabled={isEditingUser[id]}
+                onChange={(checked) =>
+                  onEditUserStatus({
+                    userId: id,
+                    newStatus: checked ? 'active' : 'locked',
+                  })
+                }
+              />
+              {isEditingUser[id] && <Spin size='small' />}
+            </StatusIndicator>
           </Card>
         );
       })}

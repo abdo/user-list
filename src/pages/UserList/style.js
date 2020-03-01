@@ -1,19 +1,28 @@
-import AntAlert from 'antd/lib/alert';
-import AntPagination from 'antd/lib/pagination';
-import AntSpin from 'antd/lib/spin';
+import { Container as MainContainer } from 'components/Container';
 import styled from 'styled-components';
 
-export const Pagination = styled(AntPagination)`
-  margin: 2rem 0;
+export const Container = styled(MainContainer)`
+  & .ant-pagination,
+  .ant-alert {
+    margin: 2rem 0;
+  }
+
+  & .ant-spin-lg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 `;
 
-export const Alert = styled(AntAlert)`
-  margin: 2rem 0;
-`;
-
-export const Spin = styled(AntSpin)`
+export const StatusIndicator = styled.div`
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  & p {
+    margin: 0;
+  }
 `;

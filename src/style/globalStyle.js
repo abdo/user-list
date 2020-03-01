@@ -23,6 +23,6 @@ export const GlobalStyle = createGlobalStyle`
     user-select: none;
   }
   p {
-    word-break: break-all;
+    word-break: break-word;
   }
 `;
