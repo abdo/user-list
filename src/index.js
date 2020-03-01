@@ -1,10 +1,23 @@
+import { GlobalStyle } from 'style/globalStyle';
+import { ThemeProvider } from 'styled-components';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import theme from 'style/theme';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import * as serviceWorker from './serviceWorker';
+import App from './App';
+
+let app = <App />;
+
+// Hook styled-components theme and GlobalStyle
+app = (
+  <ThemeProvider theme={theme}>
+    <GlobalStyle />
+    <App />
+  </ThemeProvider>
+);
+
+ReactDOM.render(app, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
