@@ -1,3 +1,4 @@
+import { BrowserRouter } from 'react-router-dom';
 import { GlobalStyle } from 'style/globalStyle';
 import { ThemeProvider } from 'styled-components';
 import React from 'react';
@@ -15,9 +16,12 @@ let app = <App />;
 app = (
   <ThemeProvider theme={theme}>
     <GlobalStyle />
-    <App />
+    {app}
   </ThemeProvider>
 );
+
+// Hook router
+app = <BrowserRouter>{app}</BrowserRouter>;
 
 ReactDOM.render(app, document.getElementById('root'));
 

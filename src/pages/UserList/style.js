@@ -3,15 +3,9 @@ import styled from 'styled-components';
 
 export const Container = styled(MainContainer)`
   & .ant-pagination,
-  .ant-alert {
+  .ant-alert,
+  .ant-btn {
     margin: 2rem 0;
-  }
-
-  & .ant-spin-lg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
   }
 `;
 

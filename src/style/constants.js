@@ -1,4 +1,4 @@
 export const screenWidths = {
-  mobile: 425,
+  mobile: 480,
   laptop: 1440,
 };

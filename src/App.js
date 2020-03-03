@@ -1,12 +1,16 @@
+import { Redirect, Route, Switch } from 'react-router-dom';
 import React from 'react';
 
+import CreateUser from './pages/CreateUser';
 import UserList from './pages/UserList';
-
-import './App.css';
 
 function App() {
   return (
-    <UserList/>
+    <Switch>
+      <Route exact path='/' component={UserList} />
+      <Route path='/new' component={CreateUser} />
+      <Redirect to='/' />
+    </Switch>
   );
 }
 

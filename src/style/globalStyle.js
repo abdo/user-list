@@ -25,4 +25,10 @@ export const GlobalStyle = createGlobalStyle`
   p {
     word-break: break-word;
   }
+  .ant-spin-lg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 `;

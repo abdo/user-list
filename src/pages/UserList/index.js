@@ -1,6 +1,8 @@
 import { Card } from 'components/Card';
+import { Link } from 'react-router-dom';
 import { userApi } from 'helpers/apiCalls';
 import Alert from 'antd/lib/alert';
+import Button from 'antd/lib/button';
 import message from 'antd/lib/message';
 import moment from 'moment';
 import Pagination from 'antd/lib/pagination';
@@ -62,13 +64,19 @@ const UserList = () => {
           type='error'
         />
       )}
-      {isLoadingUsers && <Spin size='large' />}
       {users.length > 0 && (
         <Pagination
           defaultCurrent={currentPage}
           total={users.length}
           onChange={(newPage) => setCurrentPage(newPage)}
         />
+      )}
+      {isLoadingUsers ? (
+        <Spin size='large' />
+      ) : (
+        <Link to='/new'>
+          <Button type='primary'>Create User</Button>
+        </Link>
       )}
 
       {displayedUsers.map((user) => {

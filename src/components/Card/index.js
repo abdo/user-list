@@ -1,5 +1,6 @@
 import AntCard from 'antd/lib/card';
 import styled from 'styled-components';
+
 import { screenWidths } from '../../style/constants';
 
 export const Card = styled(AntCard)`
