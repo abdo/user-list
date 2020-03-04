@@ -1,5 +1,6 @@
 import { Card } from 'components/Card';
 import { Link } from 'react-router-dom';
+import { RedirectHint } from 'components/RedirectHint';
 import { userApi } from 'helpers/apiCalls';
 import Button from 'antd/lib/button';
 import Input from 'antd/lib/input';
@@ -9,7 +10,7 @@ import React, { useState } from 'react';
 import Select from 'antd/lib/select';
 import Spin from 'antd/lib/spin';
 
-import { Container, RedirectHint } from './style';
+import { Container } from './style';
 
 const { Option } = Select;
 

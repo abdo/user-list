@@ -31,4 +31,13 @@ export const GlobalStyle = createGlobalStyle`
     left: 50%;
     transform: translate(-50%, -50%);
   }
+  .ant-input,
+  .ant-btn,
+  .ant-select {
+    margin: 2rem 0;
+  }
+
+  .ant-select {
+    width: 100%;
+  }
 `;

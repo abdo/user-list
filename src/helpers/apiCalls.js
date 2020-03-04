@@ -5,6 +5,10 @@ export const userApi = {
     return http.get(`${serverPath}/users.json`);
   },
 
+  getUser: ({ userId }) => {
+    return http.get(`${serverPath}/users/${userId}.json`);
+  },
+
   createUser: ({ userData }) => {
     return http.post(`${serverPath}/users.json`, userData);
   },

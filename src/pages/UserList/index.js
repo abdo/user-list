@@ -86,7 +86,7 @@ const UserList = () => {
         );
         const isLocked = status === 'locked';
         return (
-          <Card>
+          <Card key={id}>
             <p>
               First name: <b>{isLocked ? <s>{first_name}</s> : first_name}</b>
             </p>
@@ -109,6 +109,16 @@ const UserList = () => {
                 }
               />
               {isEditingUser[id] && <Spin size='small' />}
+              <Link
+                to={{
+                  pathname: `/edit/${id}`,
+                  state: {
+                    user,
+                  },
+                }}
+              >
+                <Button size='small'>Edit</Button>
+              </Link>
             </StatusIndicator>
           </Card>
         );
