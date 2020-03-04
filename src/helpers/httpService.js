@@ -10,4 +10,4 @@ const http = {
 
 export default http;
 
-export const serverPath = 'http://js-assessment-backend.herokuapp.com';
+export const serverPath = 'https://js-assessment-backend.herokuapp.com';
